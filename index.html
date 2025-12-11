@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4hours Soft - 모바일 앱 개발 전문 회사</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .service-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .service-card p {
+            color: #666;
+        }
+
+        .about {
+            background: #f8f9fa;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .about p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .contact {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        footer {
+            background: #333;
+            color: #aaa;
+            text-align: center;
+            padding: 30px 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>4hours Soft</h1>
+        <p>모바일 앱 개발 전문 회사</p>
+    </header>
+
+    <div class="container">
+        <h2 class="section-title">서비스</h2>
+        <div class="services">
+            <div class="service-card">
+                <h3>iOS 앱 개발</h3>
+                <p>Swift와 SwiftUI를 활용한 네이티브 iOS 앱 개발</p>
+            </div>
+            <div class="service-card">
+                <h3>Android 앱 개발</h3>
+                <p>Kotlin과 Jetpack Compose를 활용한 네이티브 Android 앱 개발</p>
+            </div>
+            <div class="service-card">
+                <h3>크로스 플랫폼 개발</h3>
+                <p>Flutter, React Native를 활용한 멀티 플랫폼 앱 개발</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="about">
+        <div class="container">
+            <h2 class="section-title">회사 소개</h2>
+            <p>4hours Soft는 모바일 앱 개발 전문 회사입니다. 고객의 아이디어를 현실로 만들어 드립니다. 최신 기술과 풍부한 경험을 바탕으로 사용자 중심의 모바일 앱을 개발합니다.</p>
+        </div>
+    </section>
+
+    <section class="contact">
+        <h2 class="section-title">문의하기</h2>
+        <a href="mailto:contact@4hourssoft.com" class="contact-btn">프로젝트 문의</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 4hours Soft. All rights reserved.</p>
+    </footer>
+</body>
+</html>
