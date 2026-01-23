@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - EXIF Remover</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
+            --secondary: #ec4899;
+            --accent: #06b6d4;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --gray-900: #111827;
+            --gray-800: #1f2937;
+            --gray-700: #374151;
+            --gray-600: #4b5563;
+            --gray-500: #6b7280;
+            --gray-400: #9ca3af;
+            --gray-300: #d1d5db;
+            --gray-200: #e5e7eb;
+            --gray-100: #f3f4f6;
+            --gray-50: #f9fafb;
+            --white: #ffffff;
+            --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+            --gradient-dark: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--gray-700);
+            background: var(--gray-50);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: var(--shadow);
+            padding: 1rem 2rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray-600);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Header */
+        .hero-header {
+            background: var(--gradient-dark);
+            padding: 8rem 2rem 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.2) 0%, transparent 50%);
+        }
+
+        .hero-header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .app-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 100px;
+            color: var(--gray-300);
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .app-badge svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .hero-header h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .hero-header p {
+            font-size: 1.125rem;
+            color: var(--gray-400);
+        }
+
+        .last-updated {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 8px;
+            color: #34d399;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 800px;
+            margin: -3rem auto 4rem;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .content-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid var(--gray-100);
+        }
+
+        /* Table of Contents */
+        .toc {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(236, 72, 153, 0.05));
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .toc h3 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .toc-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem;
+            list-style: none;
+        }
+
+        .toc-list a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray-600);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .toc-list a:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .toc-list a::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--primary-light);
+        }
+
+        /* Section Styles */
+        .policy-section {
+            margin-bottom: 3rem;
+        }
+
+        .policy-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .policy-section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gray-900);
+        }
+
+        .policy-section p {
+            color: var(--gray-600);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .policy-section ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .policy-section ul li {
+            position: relative;
+            padding-left: 1.75rem;
+            margin-bottom: 0.75rem;
+            color: var(--gray-600);
+        }
+
+        .policy-section ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6rem;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary-light);
+        }
+
+        /* Info Boxes */
+        .info-box {
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-box.highlight {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(139, 92, 246, 0.08));
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .info-box.success {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(52, 211, 153, 0.08));
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .info-box.warning {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(251, 191, 36, 0.08));
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        .info-box-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .info-box-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .info-box.highlight .info-box-icon {
+            background: var(--primary);
+        }
+
+        .info-box.success .info-box-icon {
+            background: var(--success);
+        }
+
+        .info-box.warning .info-box-icon {
+            background: var(--warning);
+        }
+
+        .info-box-icon svg {
+            width: 18px;
+            height: 18px;
+            color: var(--white);
+        }
+
+        .info-box-title {
+            font-weight: 600;
+            color: var(--gray-900);
+        }
+
+        .info-box p {
+            margin: 0;
+            color: var(--gray-600);
+            font-size: 0.95rem;
+        }
+
+        /* Contact Card */
+        .contact-card {
+            background: var(--gradient-dark);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 30% 70%, rgba(99, 102, 241, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(236, 72, 153, 0.2) 0%, transparent 50%);
+        }
+
+        .contact-card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-card h3 {
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card p {
+            color: var(--gray-400);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: var(--white);
+            color: var(--primary);
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--gray-900);
+            color: var(--gray-400);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .footer-copyright {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn svg {
+            width: 24px;
+            height: 24px;
+            color: var(--gray-600);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-header {
+                padding: 7rem 1.5rem 4rem;
+            }
+
+            .hero-header h1 {
+                font-size: 2rem;
+            }
+
+            .main-content {
+                margin-top: -2rem;
+                padding: 0 1rem;
+            }
+
+            .content-card {
+                padding: 2rem 1.5rem;
+                border-radius: 20px;
+            }
+
+            .toc {
+                padding: 1.25rem 1.5rem;
+            }
+
+            .toc-list {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+
+            .policy-section h2 {
+                font-size: 1.25rem;
+            }
+
+            .contact-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Smooth Scroll Offset for Fixed Nav */
+        [id] {
+            scroll-margin-top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">4hours Soft</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="privacy027.html">Privacy</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <header class="hero-header">
+        <div class="hero-header-content">
+            <div class="app-badge">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                EXIF Remover
+            </div>
+            <h1>Privacy Policy</h1>
+            <p>Your privacy is our priority. Learn how we protect your data.</p>
+            <div class="last-updated">Last Updated: January 2026</div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="content-card">
+            <div class="toc">
+                <h3>Quick Navigation</h3>
+                <ul class="toc-list">
+                    <li><a href="#introduction">Introduction</a></li>
+                    <li><a href="#information">Information We Collect</a></li>
+                    <li><a href="#usage">How We Use Information</a></li>
+                    <li><a href="#storage">Data Storage</a></li>
+                    <li><a href="#third-party">Third-Party Services</a></li>
+                    <li><a href="#children">Children's Privacy</a></li>
+                    <li><a href="#changes">Policy Changes</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <section id="introduction" class="policy-section">
+                <div class="section-header">
+                    <span class="section-number">1</span>
+                    <h2>Introduction</h2>
+                </div>
+                <p>4hours Soft ("we," "our," or "us") operates the "EXIF Remover" application. We respect your privacy
+                    and are committed to protecting it. This Privacy Policy explains how we handle information when you
+                    use our app.</p>
+
+                <div class="info-box success">
+                    <div class="info-box-header">
+                        <div class="info-box-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+                        </div>
+                        <span class="info-box-title">Privacy First Design</span>
+                    </div>
+                    <p>Our app does not require account registration and collects minimal data to ensure your privacy.
+                    </p>
+                </div>
+            </section>
+
+            <section id="information" class="policy-section">
+                <div class="section-header">
+                    <span class="section-number">2</span>
+                    <h2>Information We Collect</h2>
+                </div>
+                <p>Our app is designed with privacy in mind. We collect very limited information:</p>
+                <ul>
+                    <li><strong>Photo Library Access:</strong> The app requires access to your photo library to select
+                        photos for EXIF data removal and to save the processed photos. All processing happens locally on
+                        your device.</li>
+                    <li><strong>Device Information:</strong> We may collect basic device information (device type,
+                        operating system version) for app functionality and crash reporting purposes.</li>
+                </ul>
+
+                <div class="info-box highlight">
+                    <div class="info-box-header">
+                        <div class="info-box-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+                            </svg>
+                        </div>
+                        <span class="info-box-title">We Do NOT Collect</span>
+                    </div>
+                    <p>Personal information (name, email, phone number), contact lists, or precise location data. We do
+                        not store or transmit your photos to our servers.</p>
+                </div>
+            </section>
+
+            <section id="usage" class="policy-section">
+                <div class="section-header">
+                    <span class="section-number">3</span>
+                    <h2>How We Use Information</h2>
+                </div>
+                <p>The limited information we access is used only for:</p>
+                <ul>
+                    <li>Removing EXIF metadata from your photos</li>
+                    <li>Saving processed photos back to your library</li>
+                    <li>Improving app performance and stability</li>
+                    <li>Fixing bugs and technical issues</li>
+                </ul>
+            </section>
+
+            <section id="storage" class="policy-section">
+                <div class="section-header">
+                    <span class="section-number">4</span>
+                    <h2>Data Storage</h2>
+                </div>
+                <p>All photo processing and app data are stored locally on your device. We do not store your data on
+                    external servers. If you delete the app, all locally stored app data will be removed. Your photos
+                    remain in your photo library.</p>
+            </section>
+
+            <section id="third-party" class="policy-section">
+                <div class="section-header">
+                    <span class="section-number">5</span>
+                    <h2>Third-Party Services</h2>
+                </div>
+                <p>Our app may use third-party services such as Google AdMob for advertising and crash reporting tools.
+                    These services may collect anonymous usage data (e.g., Advertising ID) in accordance with their own
+                    privacy policies. We do not share any personally identifiable information with third parties.</p>
+            </section>
+
+            <section id="children" class="policy-section">
+                <div class="section-header">
+                    <span class="section-number">6</span>
+                    <h2>Children's Privacy</h2>
+                </div>
+                <p>Our app does not knowingly collect any personal information from children under the age of 13. Since
+                    our app does not require registration or collect personal data, it is safe for users of all ages.
+                </p>
+            </section>
+
+            <section id="changes" class="policy-section">
+                <div class="section-header">
+                    <span class="section-number">7</span>
+                    <h2>Changes to This Policy</h2>
+                </div>
+                <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an
+                    updated "Last Updated" date.</p>
+            </section>
+
+            <section id="contact" class="policy-section">
+                <div class="section-header">
+                    <span class="section-number">8</span>
+                    <h2>Contact Us</h2>
+                </div>
+                <p>If you have any questions about this Privacy Policy, please contact us.</p>
+
+                <div class="contact-card">
+                    <div class="contact-card-content">
+                        <h3>Have Questions?</h3>
+                        <p>We're here to help with any privacy-related inquiries.</p>
+                        <a href="mailto:4hours.soft@gmail.com" class="contact-btn">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            4hours.soft@gmail.com
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">4hours Soft</div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="privacy027.html">Privacy Policy</a>
+                <a href="mailto:4hours.soft@gmail.com">Contact</a>
+            </div>
+            <p class="footer-copyright">&copy; 2026 4hours Soft. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
