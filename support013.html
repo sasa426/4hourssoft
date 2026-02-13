@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Can We Play?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
+            --secondary: #ec4899;
+            --accent: #06b6d4;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --gray-900: #111827;
+            --gray-800: #1f2937;
+            --gray-700: #374151;
+            --gray-600: #4b5563;
+            --gray-500: #6b7280;
+            --gray-400: #9ca3af;
+            --gray-300: #d1d5db;
+            --gray-200: #e5e7eb;
+            --gray-100: #f3f4f6;
+            --gray-50: #f9fafb;
+            --white: #ffffff;
+            --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+            --gradient-dark: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--gray-700);
+            background: var(--gray-50);
+        }
+
+        /* Language Switcher */
+        .lang-switch {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 1001;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            max-width: 280px;
+        }
+
+        .lang-btn {
+            padding: 0.4rem 0.8rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: transparent;
+            color: var(--gray-600);
+            white-space: nowrap;
+        }
+
+        .lang-btn.active {
+            background: var(--gradient-primary);
+            color: var(--white);
+        }
+
+        .lang-btn:hover:not(.active) {
+            background: var(--gray-100);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: var(--shadow);
+            padding: 1rem 2rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray-600);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero */
+        .hero-header {
+            background: var(--gradient-dark);
+            padding: 8rem 2rem 5rem;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .hero-header p {
+            font-size: 1.125rem;
+            color: var(--gray-400);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main */
+        .main-content {
+            max-width: 800px;
+            margin: -3rem auto 4rem;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .content-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid var(--gray-100);
+        }
+
+        /* Language Sections */
+        .lang-section {
+            display: none;
+        }
+
+        .lang-section.active {
+            display: block;
+        }
+
+        /* FAQ Section */
+        .faq-item {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--gray-100);
+            padding-bottom: 2rem;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-answer {
+            color: var(--gray-600);
+            line-height: 1.8;
+        }
+
+        .faq-answer ol {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .faq-answer ol li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(139, 92, 246, 0.08));
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box strong {
+            color: var(--primary);
+        }
+
+        /* Contact Form Placeholder */
+        .contact-area {
+            margin-top: 3rem;
+            text-align: center;
+            background: var(--gray-50);
+            padding: 2rem;
+            border-radius: 16px;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .contact-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        @media (max-width: 768px) {
+            .lang-switch {
+                top: 0.5rem;
+                right: 0.5rem;
+                max-width: 200px;
+                padding: 0.4rem;
+            }
+
+            .lang-btn {
+                padding: 0.3rem 0.6rem;
+                font-size: 0.7rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-header h1 {
+                font-size: 2rem;
+            }
+
+            .content-card {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="lang-switch">
+        <button class="lang-btn active" onclick="switchLang('en')">English</button>
+        <button class="lang-btn" onclick="switchLang('es')">Español</button>
+        <button class="lang-btn" onclick="switchLang('ja')">日本語</button>
+        <button class="lang-btn" onclick="switchLang('zh')">中文</button>
+        <button class="lang-btn" onclick="switchLang('ko')">한국어</button>
+    </div>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">4hours Soft</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="support013.html">Support</a></li>
+                <li><a href="privacy013.html">Privacy</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero-header">
+        <h1 class="lang-en">App Support</h1>
+        <h1 class="lang-es" style="display: none;">Soporte de la Aplicación</h1>
+        <h1 class="lang-ja" style="display: none;">アプリサポート</h1>
+        <h1 class="lang-zh" style="display: none;">应用支持</h1>
+        <h1 class="lang-ko" style="display: none;">앱 지원</h1>
+
+        <p class="lang-en">Need help with Can We Play? Find answers to common questions or get in touch with our team.
+        </p>
+        <p class="lang-es" style="display: none;">¿Necesitas ayuda con Can We Play? Encuentra respuestas a preguntas
+            comunes o contacta con nuestro equipo.</p>
+        <p class="lang-ja" style="display: none;">Can We Play?についてお困りですか？よくある質問を確認するか、サポートチームにお問い合わせください。</p>
+        <p class="lang-zh" style="display: none;">需要Can We Play?的帮助吗？查找常见问题的答案或联系我们的团队。</p>
+        <p class="lang-ko" style="display: none;">Can We Play? 앱에 대한 도움이 필요하신가요? 자주 묻는 질문을 확인하거나 문의해 주세요.</p>
+    </header>
+
+    <main class="main-content">
+        <div class="content-card">
+            <!-- Korean Version -->
+            <div class="lang-section" id="ko-content">
+                <div class="faq-item">
+                    <h3 class="faq-question">데이터 삭제 요청 방법</h3>
+                    <p class="faq-answer">
+                        Can We Play? 앱에서 귀하의 모든 개인정보를 삭제하려면 다음 단계를 따라주세요:
+                    </p>
+                    <div class="highlight-box">
+                        <p class="faq-answer">
+                            <strong>앱 내에서 직접 삭제:</strong>
+                        </p>
+                        <ol>
+                            <li>Can We Play? 앱을 실행합니다</li>
+                            <li>설정(Settings) 메뉴로 이동합니다</li>
+                            <li>"회원 탈퇴" 또는 "계정 삭제" 옵션을 선택합니다</li>
+                            <li>확인 절차를 완료합니다</li>
+                        </ol>
+                        <p class="faq-answer">
+                            <strong>이메일로 삭제 요청:</strong><br>
+                            앱에 접근할 수 없는 경우, <a href="mailto:4hours.soft@gmail.com"
+                                style="color: var(--primary);">4hours.soft@gmail.com</a>으로 이메일을 보내주세요.
+                            이메일 제목에 "데이터 삭제 요청"을 명시하고, 본문에 귀하의 계정 정보(닉네임 또는 UID)를 포함해 주세요.
+                        </p>
+                    </div>
+                    <p class="faq-answer">
+                        <strong>삭제되는 데이터:</strong> 프로필 정보, 친구 목록, 채팅 기록, 놀이 요청 기록 등 모든 개인정보가 즉시 영구적으로 삭제됩니다.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">버그를 신고하려면 어떻게 해야 하나요?</h3>
+                    <p class="faq-answer">문제가 발생한 경우, 문제에 대한 세부 정보, 기기 모델 및 OS 버전을 포함하여 이메일로 보내주세요.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">환불을 요청하려면 어떻게 해야 하나요?</h3>
+                    <p class="faq-answer">
+                        iOS 앱의 경우, 환불은 Apple에서 직접 처리합니다.
+                        <a href="https://reportaproblem.apple.com"
+                            style="color: var(--primary);">reportaproblem.apple.com</a>을 방문하여 환불을 요청하세요.
+                        <br><br>
+                        Android 앱의 경우, 환불은 Google Play에서 직접 처리합니다.
+                        <a href="https://support.google.com/googleplay/answer/2479637"
+                            style="color: var(--primary);">Google Play 환불 정책</a>을 확인하세요.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">기능 요청이 있습니다.</h3>
+                    <p class="faq-answer">사용자 여러분의 의견을 듣는 것을 좋아합니다! 이메일로 제안 사항을 보내주세요.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">개인정보처리방침은 어디서 볼 수 있나요?</h3>
+                    <p class="faq-answer">
+                        <a href="privacy013.html" style="color: var(--primary);">여기</a>에서 개인정보처리방침을 확인할 수 있습니다.
+                    </p>
+                </div>
+
+                <div class="contact-area">
+                    <h3>추가 도움이 필요하신가요?</h3>
+                    <p>지원팀에 직접 문의하세요.</p>
+                    <a href="mailto:4hours.soft@gmail.com" class="contact-btn">이메일 지원</a>
+                </div>
+            </div>
+
+            <!-- English Version -->
+            <div class="lang-section active" id="en-content">
+                <div class="faq-item">
+                    <h3 class="faq-question">How to Request Data Deletion</h3>
+                    <p class="faq-answer">
+                        To delete all your personal information from the Can We Play? app, please follow these steps:
+                    </p>
+                    <div class="highlight-box">
+                        <p class="faq-answer">
+                            <strong>Delete directly in the app:</strong>
+                        </p>
+                        <ol>
+                            <li>Open the Can We Play? app</li>
+                            <li>Go to Settings</li>
+                            <li>Select "Delete Account" or "Withdraw Membership"</li>
+                            <li>Complete the confirmation process</li>
+                        </ol>
+                        <p class="faq-answer">
+                            <strong>Request deletion via email:</strong><br>
+                            If you cannot access the app, please send an email to <a href="mailto:4hours.soft@gmail.com"
+                                style="color: var(--primary);">4hours.soft@gmail.com</a>.
+                            Include "Data Deletion Request" in the subject line and provide your account information
+                            (nickname or UID) in the body.
+                        </p>
+                    </div>
+                    <p class="faq-answer">
+                        <strong>Data to be deleted:</strong> All personal information including profile information,
+                        friend list, chat history, and play request records will be permanently deleted immediately.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">How can I report a bug?</h3>
+                    <p class="faq-answer">If you encounter any issues, please email us with details about the problem,
+                        your device model, and OS version.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">How do I request a refund?</h3>
+                    <p class="faq-answer">
+                        For iOS apps, refunds are handled directly by Apple. Please visit
+                        <a href="https://reportaproblem.apple.com"
+                            style="color: var(--primary);">reportaproblem.apple.com</a> to request a refund.
+                        <br><br>
+                        For Android apps, refunds are handled directly by Google Play. Please check the
+                        <a href="https://support.google.com/googleplay/answer/2479637"
+                            style="color: var(--primary);">Google Play refund policy</a>.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">I have a feature request.</h3>
+                    <p class="faq-answer">We love hearing from our users! Feel free to send us your suggestions via
+                        email.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">Where can I see the Privacy Policy?</h3>
+                    <p class="faq-answer">
+                        You can view our privacy policy <a href="privacy013.html"
+                            style="color: var(--primary);">here</a>.
+                    </p>
+                </div>
+
+                <div class="contact-area">
+                    <h3>Still need help?</h3>
+                    <p>Contact our support team directly.</p>
+                    <a href="mailto:4hours.soft@gmail.com" class="contact-btn">Email Support</a>
+                </div>
+            </div>
+
+            <!-- Spanish Version -->
+            <div class="lang-section" id="es-content">
+                <div class="faq-item">
+                    <h3 class="faq-question">Cómo solicitar la eliminación de datos</h3>
+                    <p class="faq-answer">
+                        Para eliminar toda su información personal de la aplicación Can We Play?, siga estos pasos:
+                    </p>
+                    <div class="highlight-box">
+                        <p class="faq-answer">
+                            <strong>Eliminar directamente en la aplicación:</strong>
+                        </p>
+                        <ol>
+                            <li>Abra la aplicación Can We Play?</li>
+                            <li>Vaya a Configuración</li>
+                            <li>Seleccione "Eliminar cuenta" o "Cancelar membresía"</li>
+                            <li>Complete el proceso de confirmación</li>
+                        </ol>
+                        <p class="faq-answer">
+                            <strong>Solicitar eliminación por correo electrónico:</strong><br>
+                            Si no puede acceder a la aplicación, envíe un correo electrónico a <a
+                                href="mailto:4hours.soft@gmail.com"
+                                style="color: var(--primary);">4hours.soft@gmail.com</a>.
+                            Incluya "Solicitud de eliminación de datos" en el asunto y proporcione la información de su
+                            cuenta
+                            (apodo o UID) en el cuerpo.
+                        </p>
+                    </div>
+                    <p class="faq-answer">
+                        <strong>Datos a eliminar:</strong> Toda la información personal, incluida la información del
+                        perfil,
+                        la lista de amigos, el historial de chat y los registros de solicitudes de juego se eliminarán
+                        permanentemente de inmediato.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Cómo puedo reportar un error?</h3>
+                    <p class="faq-answer">Si encuentra algún problema, envíenos un correo electrónico con detalles sobre
+                        el problema,
+                        el modelo de su dispositivo y la versión del sistema operativo.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Cómo solicito un reembolso?</h3>
+                    <p class="faq-answer">
+                        Para aplicaciones iOS, los reembolsos son manejados directamente por Apple. Visite
+                        <a href="https://reportaproblem.apple.com"
+                            style="color: var(--primary);">reportaproblem.apple.com</a> para solicitar un reembolso.
+                        <br><br>
+                        Para aplicaciones Android, los reembolsos son manejados directamente por Google Play. Consulte
+                        la
+                        <a href="https://support.google.com/googleplay/answer/2479637"
+                            style="color: var(--primary);">política de reembolsos de Google Play</a>.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">Tengo una solicitud de función.</h3>
+                    <p class="faq-answer">¡Nos encanta escuchar a nuestros usuarios! No dude en enviarnos sus
+                        sugerencias por
+                        correo electrónico.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Dónde puedo ver la Política de privacidad?</h3>
+                    <p class="faq-answer">
+                        Puede ver nuestra política de privacidad <a href="privacy013.html"
+                            style="color: var(--primary);">aquí</a>.
+                    </p>
+                </div>
+
+                <div class="contact-area">
+                    <h3>¿Todavía necesitas ayuda?</h3>
+                    <p>Contacta directamente con nuestro equipo de soporte.</p>
+                    <a href="mailto:4hours.soft@gmail.com" class="contact-btn">Soporte por correo electrónico</a>
+                </div>
+            </div>
+
+            <!-- Japanese Version -->
+            <div class="lang-section" id="ja-content">
+                <div class="faq-item">
+                    <h3 class="faq-question">データ削除のリクエスト方法</h3>
+                    <p class="faq-answer">
+                        Can We Play?アプリからすべての個人情報を削除するには、次の手順に従ってください：
+                    </p>
+                    <div class="highlight-box">
+                        <p class="faq-answer">
+                            <strong>アプリ内で直接削除：</strong>
+                        </p>
+                        <ol>
+                            <li>Can We Play?アプリを開く</li>
+                            <li>設定に移動</li>
+                            <li>「アカウント削除」または「退会」を選択</li>
+                            <li>確認プロセスを完了</li>
+                        </ol>
+                        <p class="faq-answer">
+                            <strong>メールで削除をリクエスト：</strong><br>
+                            アプリにアクセスできない場合は、<a href="mailto:4hours.soft@gmail.com"
+                                style="color: var(--primary);">4hours.soft@gmail.com</a>にメールを送信してください。
+                            件名に「データ削除リクエスト」を含め、本文にアカウント情報（ニックネームまたはUID）を記載してください。
+                        </p>
+                    </div>
+                    <p class="faq-answer">
+                        <strong>削除されるデータ：</strong> プロフィール情報、友達リスト、チャット履歴、プレイリクエスト記録を含むすべての個人情報が即座に完全に削除されます。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">バグを報告するにはどうすればよいですか？</h3>
+                    <p class="faq-answer">問題が発生した場合は、問題の詳細、デバイスモデル、OSバージョンを記載してメールでお知らせください。</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">返金をリクエストするにはどうすればよいですか？</h3>
+                    <p class="faq-answer">
+                        iOSアプリの場合、返金はAppleが直接処理します。
+                        <a href="https://reportaproblem.apple.com"
+                            style="color: var(--primary);">reportaproblem.apple.com</a>にアクセスして返金をリクエストしてください。
+                        <br><br>
+                        Androidアプリの場合、返金はGoogle Playが直接処理します。
+                        <a href="https://support.google.com/googleplay/answer/2479637"
+                            style="color: var(--primary);">Google Playの返金ポリシー</a>をご確認ください。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">機能リクエストがあります。</h3>
+                    <p class="faq-answer">ユーザーの皆様からのご意見をお待ちしております！メールでご提案をお送りください。</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">プライバシーポリシーはどこで確認できますか？</h3>
+                    <p class="faq-answer">
+                        プライバシーポリシーは<a href="privacy013.html" style="color: var(--primary);">こちら</a>でご覧いただけます。
+                    </p>
+                </div>
+
+                <div class="contact-area">
+                    <h3>まだお困りですか？</h3>
+                    <p>サポートチームに直接お問い合わせください。</p>
+                    <a href="mailto:4hours.soft@gmail.com" class="contact-btn">メールサポート</a>
+                </div>
+            </div>
+
+            <!-- Chinese Version -->
+            <div class="lang-section" id="zh-content">
+                <div class="faq-item">
+                    <h3 class="faq-question">如何请求删除数据</h3>
+                    <p class="faq-answer">
+                        要从Can We Play?应用中删除所有个人信息，请按照以下步骤操作：
+                    </p>
+                    <div class="highlight-box">
+                        <p class="faq-answer">
+                            <strong>直接在应用中删除：</strong>
+                        </p>
+                        <ol>
+                            <li>打开Can We Play?应用</li>
+                            <li>进入设置</li>
+                            <li>选择"删除账户"或"退出会员"</li>
+                            <li>完成确认流程</li>
+                        </ol>
+                        <p class="faq-answer">
+                            <strong>通过电子邮件请求删除：</strong><br>
+                            如果您无法访问应用，请发送电子邮件至<a href="mailto:4hours.soft@gmail.com"
+                                style="color: var(--primary);">4hours.soft@gmail.com</a>。
+                            在主题行中包含"数据删除请求"，并在正文中提供您的账户信息（昵称或UID）。
+                        </p>
+                    </div>
+                    <p class="faq-answer">
+                        <strong>将被删除的数据：</strong> 包括个人资料信息、好友列表、聊天记录和游戏请求记录在内的所有个人信息将立即永久删除。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">如何报告错误？</h3>
+                    <p class="faq-answer">如果您遇到任何问题，请通过电子邮件向我们发送问题详情、设备型号和操作系统版本。</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">如何申请退款？</h3>
+                    <p class="faq-answer">
+                        对于iOS应用，退款由Apple直接处理。请访问
+                        <a href="https://reportaproblem.apple.com"
+                            style="color: var(--primary);">reportaproblem.apple.com</a>申请退款。
+                        <br><br>
+                        对于Android应用，退款由Google Play直接处理。请查看
+                        <a href="https://support.google.com/googleplay/answer/2479637"
+                            style="color: var(--primary);">Google Play退款政策</a>。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">我有功能请求。</h3>
+                    <p class="faq-answer">我们很乐意听取用户的意见！请随时通过电子邮件向我们发送您的建议。</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">在哪里可以查看隐私政策？</h3>
+                    <p class="faq-answer">
+                        您可以在<a href="privacy013.html" style="color: var(--primary);">这里</a>查看我们的隐私政策。
+                    </p>
+                </div>
+
+                <div class="contact-area">
+                    <h3>仍需帮助？</h3>
+                    <p>直接联系我们的支持团队。</p>
+                    <a href="mailto:4hours.soft@gmail.com" class="contact-btn">电子邮件支持</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div style="text-align: center; padding: 2rem; color: var(--gray-400);">
+            &copy; 2026 4hours Soft. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        function switchLang(lang) {
+            // Update button states
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Update content sections
+            document.querySelectorAll('.lang-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(lang + '-content').classList.add('active');
+
+            // Update header text for all languages
+            const languages = ['en', 'es', 'ja', 'zh', 'ko'];
+            languages.forEach(l => {
+                document.querySelectorAll('.lang-' + l).forEach(el => {
+                    el.style.display = lang === l ? 'block' : 'none';
+                });
+            });
+        }
+
+        // Set default language to English
+        window.addEventListener('DOMContentLoaded', () => {
+            switchLang('en');
+            document.querySelectorAll('.lang-btn')[0].classList.add('active');
+        });
+    </script>
+</body>
+
+</html>
