@@ -1,5 +1,14 @@
 # Work Log
 
+## 2026-11-07
+### Create Privacy Policy Page for 중개콩 (JunggaeKong)
+- **Purpose**: 앱 스토어 등록에 필요한 개인정보처리방침 공개 URL 제공을 위해 `privacy015.html` 생성
+- **Details**:
+  - 개인정보를 수집·저장·전송하지 않는 완전 오프라인 앱임을 명시 (서버·제3자 SDK·기기 권한 없음, 학습 기록은 기기 안에만 저장)
+  - 한국어 기본, 영어 전환 지원 (privacy013.html의 언어 전환 방식 재사용)
+  - URL: https://4hourssoft.com/privacy015.html
+- **Status**: Completed
+
 ## 2026-02-12
 ### Add Multi-language Support to support013.html
 - **Purpose**: support013.html 페이지에 5개 언어(영어, 스페인어, 일본어, 중국어, 한국어) 지원 추가
