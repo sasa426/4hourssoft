@@ -1,5 +1,13 @@
 # Work Log
 
+## 2026-11-10
+### Rename 중개콩 → 공중콩 in privacy015.html
+- **Purpose**: 앱 이름이 2026-11-08에 '공중콩(GongjungKong)'으로 바뀌어 개인정보처리방침의 앱 이름 표기를 맞춤
+- **Details**:
+  - `privacy015.html`의 '중개콩' 4곳 → '공중콩', 'JunggaeKong' 4곳 → 'GongjungKong' (제목·배지·요약·본문 제1조·영문 제1조)
+  - 앱 ID `com.sasa.junggaekong`과 URL(https://4hourssoft.com/privacy015.html)은 변경 없음
+- **Status**: Completed
+
 ## 2026-11-07
 ### Create Privacy Policy Page for 중개콩 (JunggaeKong)
 - **Purpose**: 앱 스토어 등록에 필요한 개인정보처리방침 공개 URL 제공을 위해 `privacy015.html` 생성
