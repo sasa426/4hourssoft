@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="공중콩 앱 이용 안내, 자주 묻는 질문, 오류 제보 및 문의 방법">
+    <title>공중콩 고객 지원 | 4hours Soft</title>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --gray-900: #111827;
+            --gray-700: #374151;
+            --gray-600: #4b5563;
+            --gray-400: #9ca3af;
+            --gray-100: #f3f4f6;
+            --gray-50: #f9fafb;
+            --white: #ffffff;
+            --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+            --gradient-dark: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            line-height: 1.7;
+            color: var(--gray-700);
+            background: var(--gray-50);
+        }
+
+        a { color: var(--primary-dark); }
+        a:focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; }
+
+        nav {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            padding: 1rem 2rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .nav-links { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; }
+        .nav-links a { color: var(--gray-600); font-weight: 600; text-decoration: none; }
+        .nav-links a:hover { color: var(--primary); }
+
+        .hero-header {
+            background: var(--gradient-dark);
+            padding: 5rem 1.5rem 6rem;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-header h1 { font-size: clamp(2rem, 5vw, 3rem); margin: 0 0 1rem; }
+        .hero-header p { max-width: 650px; margin: 0 auto; color: #d1d5db; font-size: 1.1rem; }
+
+        .main-content {
+            max-width: 800px;
+            margin: -3rem auto 4rem;
+            padding: 0 1.5rem;
+            position: relative;
+        }
+
+        .content-card {
+            background: var(--white);
+            border: 1px solid var(--gray-100);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: var(--shadow-xl);
+        }
+
+        h2 { color: var(--gray-900); font-size: 1.6rem; margin: 0 0 1.5rem; }
+        h3 { color: var(--gray-900); font-size: 1.2rem; margin: 0 0 .5rem; }
+        p { margin: 0; }
+
+        .faq-item { padding: 0 0 1.75rem; margin: 0 0 1.75rem; border-bottom: 1px solid var(--gray-100); }
+        .faq-item:last-child { margin-bottom: 0; border-bottom: 0; padding-bottom: 0; }
+
+        .contact-area {
+            margin-top: 3rem;
+            padding: 2rem;
+            border-radius: 16px;
+            background: var(--gray-50);
+        }
+
+        .contact-area p + p { margin-top: 1rem; }
+        .contact-btn {
+            display: inline-block;
+            margin-top: 1.25rem;
+            padding: .8rem 1.4rem;
+            border-radius: 12px;
+            background: var(--primary);
+            color: var(--white);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .contact-btn:hover { background: var(--primary-dark); }
+        .privacy-area { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--gray-100); }
+        .privacy-area p { margin-bottom: .75rem; }
+        footer { padding: 0 1.5rem 2rem; color: var(--gray-600); text-align: center; }
+
+        @media (max-width: 600px) {
+            nav { padding: .9rem 1.25rem; }
+            .logo { font-size: 1.25rem; }
+            .nav-links { gap: 1rem; font-size: .9rem; }
+            .hero-header { padding: 4rem 1.25rem 5rem; }
+            .hero-header p { font-size: 1rem; }
+            .main-content { padding: 0 1rem; }
+            .content-card { padding: 1.5rem; border-radius: 18px; }
+            .contact-area { padding: 1.5rem; }
+        }
+    </style>
+</head>
+
+<body>
+    <nav aria-label="주 메뉴">
+        <div class="nav-container">
+            <a href="index.html" class="logo">4hours Soft</a>
+            <ul class="nav-links">
+                <li><a href="index.html">홈</a></li>
+                <li><a href="privacy015.html">개인정보처리방침</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero-header">
+        <h1>공중콩 고객 지원</h1>
+        <p>공중콩은 공인중개사 기출문제와 연습문제, OX 문제를 풀고 복습할 수 있는 학습 앱입니다. 앱 이용 중 궁금한 점이나 불편한 점이 있으면 아래 이메일로 알려 주세요.</p>
+    </header>
+
+    <main class="main-content">
+        <div class="content-card">
+            <section aria-labelledby="faq-title">
+                <h2 id="faq-title">자주 묻는 질문</h2>
+                <div class="faq-item">
+                    <h3>학습 기록은 어디에 저장되나요?</h3>
+                    <p>학습 기록은 사용 중인 기기에 저장됩니다. 계정이나 기기 간 자동 동기화 기능은 없습니다.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>기기를 바꾸거나 앱을 삭제하기 전에 학습 기록은 어떻게 보관하나요?</h3>
+                    <p>앱 설정에서 학습 기록을 JSON 파일로 내보내 보관해 주세요. 새 기기에서는 해당 파일을 직접 가져올 수 있습니다. 앱을 삭제하기 전에 기록을 별도로 보관해 주세요.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>문제나 해설의 오류는 어떻게 알리나요?</h3>
+                    <p>화면에 표시된 시험연도와 회차, A형·B형, 1차·2차 구분, 과목, 문제 번호와 오류로 보이는 부분을 이메일로 알려 주세요. 가능하면 어떤 내용으로 고쳐야 하는지도 적어 주세요. 개인 학습 기록 JSON 파일 원본은 보내지 않으셔도 됩니다. 화면을 첨부한다면 개인 정보가 보이지 않도록 가려 주세요.</p>
+                </div>
+            </section>
+
+            <section class="contact-area" aria-labelledby="contact-title">
+                <h2 id="contact-title">앱 이용·오류·기능 문의</h2>
+                <p>앱 오류, 이용 방법, 기능에 관한 의견은 <a href="mailto:4hours.soft@gmail.com">4hours.soft@gmail.com</a>으로 보내 주세요. 문제를 살펴볼 수 있도록 사용 기기와 운영체제를 알려 주세요. 문제가 생긴 화면과 그때 하신 일을 순서대로 알려 주세요.</p>
+                <p>비밀번호나 주민등록번호 등 민감한 정보와 학습 기록 JSON 파일 원본은 보내지 말아 주세요.</p>
+                <a class="contact-btn" href="mailto:4hours.soft@gmail.com">이메일로 문의하기</a>
+            </section>
+
+            <section class="privacy-area" aria-labelledby="privacy-title">
+                <h2 id="privacy-title">개인정보처리방침</h2>
+                <p>공중콩의 개인정보처리방침은 아래 링크에서 확인할 수 있습니다.</p>
+                <a href="privacy015.html">공중콩 개인정보처리방침 보기</a>
+            </section>
+        </div>
+    </main>
+
+    <footer>&copy; 2026 4hours Soft. All rights reserved.</footer>
+</body>
+
+</html>
